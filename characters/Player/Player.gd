@@ -4,7 +4,6 @@ var hotkeys = {
 	KEY_1: 0,
 	KEY_2: 1,
 	KEY_3: 2,
-	KEY_4: 3
 }
 
 export var mouse_sens = 0.065
@@ -21,6 +20,7 @@ func _ready():
 	character_mover.init(self)
 	health_manager.init()
 	health_manager.connect("dead", self, "kill")
+	weapon_manager.init($Camera/FirePoint, [self])
 	
 func _process(delta):
 	if Input.is_action_just_pressed("exit"):
@@ -39,6 +39,8 @@ func _process(delta):
 	if Input.is_action_pressed("move_right"):
 		move_vec += Vector3.RIGHT
 	character_mover.set_move_vec(move_vec)
+	
+	weapon_manager.attack(Input.is_action_just_pressed("attack"), Input.is_action_pressed("attack"))
 	
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -63,3 +65,7 @@ func heal(amount):
 func kill():
 	dead = true
 	character_mover.freeze()
+
+
+func fire():
+	pass # Replace with function body.
