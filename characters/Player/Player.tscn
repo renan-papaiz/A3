@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://characters/CharacterMover.gd" type="Script" id=1]
 [ext_resource path="res://characters/Player/Player.gd" type="Script" id=2]
@@ -268,6 +268,66 @@ tracks/1/keys = {
 "values": [ Vector3( 2.43676e-06, 170.19, -2.90877e-07 ) ]
 }
 
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapons:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.36811, -0.340941 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Weapons:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapons:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.36811, -0.340941 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "moving"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapons:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.36811, -0.340941 ), Vector3( 0.022094, 1.36811, -0.340941 ) ]
+}
+
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.121417, 0, 0.106084 )
 collision_layer = 6
@@ -297,7 +357,7 @@ script = ExtResource( 8 )
 attack_rate = 0.2
 
 [node name="Graphics" type="Spatial" parent="Camera/WeaponManager/Weapons/Handgun"]
-transform = Transform( 0.0998717, 0.00653295, 0.99498, -0.0862432, 0.996275, 0.00211528, -0.991257, -0.0860216, 0.100063, 0.11563, 2.66456, 7.85543 )
+transform = Transform( 0.0998717, 0.00653294, 0.99498, -0.0862432, 0.996275, 0.00211529, -0.991257, -0.0860215, 0.100063, 0.11563, 2.66456, 7.85543 )
 
 [node name="Makarov" parent="Camera/WeaponManager/Weapons/Handgun/Graphics" instance=ExtResource( 5 )]
 transform = Transform( 1, -9.31323e-10, 0, 9.31323e-10, 1, 4.65661e-10, 0, 4.65661e-10, 1, 0, 0, 0 )
@@ -454,6 +514,12 @@ margin_right = 36.0
 margin_bottom = 36.0
 texture = ExtResource( 13 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponManager"]
+autoplay = "idle"
+anims/RESET = SubResource( 11 )
+anims/idle = SubResource( 12 )
+anims/moving = SubResource( 13 )
+
 [node name="FirePoint" type="Spatial" parent="Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.482557 )
 
@@ -470,5 +536,6 @@ script = ExtResource( 3 )
 [connection signal="fired" from="Camera/WeaponManager/Weapons/Handgun" to="Camera/WeaponManager/Weapons/Handgun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponManager/Weapons/Shotgun" to="Camera/WeaponManager/Weapons/Shotgun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponManager/Weapons/MachineGun" to="Camera/WeaponManager/Weapons/MachineGun/Graphics/MuzzleFlash" method="flash"]
+[connection signal="movement_info" from="CharacterMover" to="Camera/WeaponManager" method="update_animation"]
 [connection signal="timeout" from="Timer" to="." method="hurt" binds= [ 30, Vector3( 0, 0, 0 ) ]]
 [connection signal="timeout" from="Timer2" to="." method="heal" binds= [ 5 ]]
