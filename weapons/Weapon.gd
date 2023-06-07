@@ -10,7 +10,7 @@ var fire_point : Spatial
 var bodies_to_exclude : Array = []
 
 export var damage = 5
-export var ammo = 30
+export var ammo = 90
 
 export var attack_rate = 0.1
 var attack_timer : Timer
@@ -39,7 +39,7 @@ func attack(attack_input_just_pressed: bool, attack_input_held: bool):
 	if automatic and !attack_input_held:
 		return
 	elif !automatic and !attack_input_just_pressed:
-	 return
+		return
 	
 	if ammo == 0:
 		if attack_input_just_pressed:
@@ -64,7 +64,9 @@ func finish_attack():
 
 func set_active():
 	show()
+	$Crosshair.show()
 
 func set_inactive():
 	anim_player.play("idle")
 	hide()
+	$Crosshair.hide()
