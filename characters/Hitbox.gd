@@ -3,13 +3,13 @@ extends Area
 class_name Hitbox
 
 export var quarter_spot = false
-export var quarter_spot_damage_multiplier = 0.25
+export var quarter_spot_damage_multiplier = 0.5
 export var half_spot = false
-export var half_spot_damage_multiplier = 0.5
+export var half_spot_damage_multiplier = 0.75
 export var double_spot = false
-export var double_spot_damage_multiplier = 2
+export var double_spot_damage_multiplier = 1.5
 export var quadruple_spot = false
-export var quadruple_spot_damage_multiplier = 4
+export var quadruple_spot_damage_multiplier = 2
 
 signal hurt
 
