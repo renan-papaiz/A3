@@ -1,6 +1,7 @@
 extends Spatial
 
 var blood_spray = preload("res://effects/BloodSpray.tscn")
+var gibs = preload("res://effects/Gibs.tscn")
 
 signal dead
 signal hurt
@@ -11,7 +12,7 @@ signal gibbed
 export var max_health = 100
 var cur_health = 1
 
-export var gib_at = -20
+export var gib_at = -12
 
 func _ready():
 	init()
@@ -26,7 +27,7 @@ func hurt(damage: int, dir: Vector3):
 		return
 	cur_health -= damage
 	if cur_health <= gib_at:
-		pass
+		spawn_gibs()
 		emit_signal("gibbed")
 	if cur_health <= 0:
 		emit_signal("dead")
@@ -60,3 +61,9 @@ func spawn_blood(dir):
 	var z = x.cross(y)
 	
 	blood_spray_instance.global_transform.basis = Basis(x, y, z)
+
+func spawn_gibs():
+	var gibs_inst = gibs.instance()
+	get_tree().get_root().add_child(gibs_inst)
+	gibs_inst.global_transform.origin = global_transform.origin
+	gibs_inst.enable_gibs()

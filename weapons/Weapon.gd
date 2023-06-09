@@ -9,7 +9,7 @@ export var automatic = false
 var fire_point : Spatial
 var bodies_to_exclude : Array = []
 
-export var damage = 10
+export var damage = 12
 export var ammo = 90
 
 export var attack_rate = 0.1
