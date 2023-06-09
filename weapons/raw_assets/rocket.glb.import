@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/reptilemonster.glb-fb0e4732dfff32cc1fb0ea0206343ae1.scn"
+path="res://.import/rocket.glb-1600072bb9bd8c46023b32675d6a4640.scn"
 
 [deps]
 
-source_file="res://characters/enemies/raw_assets/reptilemonster.glb"
-dest_files=[ "res://.import/reptilemonster.glb-fb0e4732dfff32cc1fb0ea0206343ae1.scn" ]
+source_file="res://weapons/raw_assets/rocket.glb"
+dest_files=[ "res://.import/rocket.glb-1600072bb9bd8c46023b32675d6a4640.scn" ]
 
 [params]
 

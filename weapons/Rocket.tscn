@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://weapons/raw_assets/rocket.glb" type="PackedScene" id=1]
+[ext_resource path="res://effects/raw_assets/muzzleflash3.glb" type="PackedScene" id=2]
+[ext_resource path="res://effects/circle32.png" type="Texture" id=3]
+[ext_resource path="res://weapons/Rocket.gd" type="Script" id=4]
+
+[sub_resource type="SphereShape" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0.0117647, 1 )
+colors = PoolColorArray( 0.721569, 0.721569, 0.721569, 0.721569, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+gravity = Vector3( 0, 0, 0 )
+scale = 0.5
+color_ramp = SubResource( 6 )
+
+[sub_resource type="QuadMesh" id=4]
+
+[node name="Rocket" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0.614773, 0.0252715 )
+collision_mask = 5
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.769238 )
+shape = SubResource( 1 )
+
+[node name="Graphics" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+
+[node name="rocket" parent="Graphics" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0244486, 0.0135677, 0.0222123 )
+
+[node name="muzzleflash3" parent="Graphics/rocket" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+
+[node name="SmokeTrail" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0167124, 0, 0 )
+material_override = SubResource( 2 )
+amount = 16
+local_coords = false
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 4 )
+
+[node name="ShowAfterTime" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+autostart = true
+
+[node name="ExplodeAfterTime" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="DestroyAfterHit" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="ShowAfterTime" to="." method="show"]
+[connection signal="timeout" from="ExplodeAfterTime" to="." method="explode"]
+[connection signal="timeout" from="DestroyAfterHit" to="." method="queue_free"]
