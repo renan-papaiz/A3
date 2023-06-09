@@ -50,6 +50,10 @@ shape = SubResource( 1 )
 
 [node name="Graphics" parent="." instance=ExtResource( 2 )]
 
+[node name="Skeleton" parent="Graphics/Armature" index="0"]
+bones/0/bound_children = [ NodePath("Hip") ]
+bones/1/bound_children = [ NodePath("Body") ]
+
 [node name="ArmUL" type="BoneAttachment" parent="Graphics/Armature/Skeleton" index="1"]
 transform = Transform( -0.826506, 0.56134, -0.0422589, -0.550301, -0.821497, -0.14937, -0.118563, -0.1002, 0.987878, 0.234545, 1.44253, 0.15025 )
 bone_name = "upper_arm.l"
@@ -150,7 +154,7 @@ transform = Transform( 1, -2.3801e-07, 6.34367e-08, 6.03622e-08, -0.0128953, -0.
 shape = SubResource( 6 )
 
 [node name="Body" type="BoneAttachment" parent="Graphics/Armature/Skeleton" index="10"]
-transform = Transform( 0.986326, 0.162169, -0.0293755, -0.159121, 0.890622, -0.425997, -0.042921, 0.424846, 0.904248, 0, 1.13977, 0 )
+transform = Transform( 1, 0, 2.38418e-07, -8.6824e-08, 0.931334, 0.364166, -2.22047e-07, -0.364166, 0.931334, 0, 1.13977, 0 )
 bone_name = "body"
 
 [node name="Hitbox" parent="Graphics/Armature/Skeleton/Body" instance=ExtResource( 1 )]
@@ -176,6 +180,7 @@ transform = Transform( 1, -2.06581e-07, 1.54218e-07, 5.9798e-08, -0.396025, -0.9
 shape = SubResource( 8 )
 
 [node name="HealthManager" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1169, 0 )
 max_health = 60
 
 [node name="CharacterMover" parent="." instance=ExtResource( 5 )]

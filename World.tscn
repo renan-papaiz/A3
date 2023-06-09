@@ -112,7 +112,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1.75, 0, -1, 0, -4.37114e-08, -35.
 transform = Transform( 0.999789, 0, -0.0205585, 0, 1, 0, 0.0205585, 0, 0.999789, -31.5962, -0.0379829, -20.2999 )
 
 [node name="MeleeMonster" parent="Navigation" instance=ExtResource( 6 )]
-transform = Transform( 0.998992, 0, -0.0448923, 0, 1, 0, 0.0448923, 0, 0.998992, -26.7955, 1.10721, -20.4846 )
+transform = Transform( 0.998992, 0, -0.0448923, 0, 1, 0, 0.0448923, 0, 0.998992, -26.2841, 1.10721, -29.1381 )
 
 [node name="MeleeMonster2" parent="Navigation" instance=ExtResource( 6 )]
 transform = Transform( 0.0120775, 0, 0.999927, 0, 1, 0, -0.999927, 0, 0.0120775, -36.2296, 1.10721, -13.5412 )
