@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://characters/CharacterMover.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/Player/Player.gd" type="Script" id=2]
@@ -16,6 +16,9 @@
 [ext_resource path="res://weapons/crosshairs/crosshair001.png" type="Texture" id=14]
 [ext_resource path="res://weapons/crosshairs/crosshair066.png" type="Texture" id=15]
 [ext_resource path="res://characters/Player/PickupManager.gd" type="Script" id=16]
+[ext_resource path="res://UI/crypt_domino_1b.png" type="Texture" id=17]
+[ext_resource path="res://UI/KleintenFont.tres" type="DynamicFont" id=18]
+[ext_resource path="res://characters/Player/StatsDisplay.gd" type="Script" id=19]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -368,7 +371,7 @@ ammo = 999
 attack_rate = 0.2
 
 [node name="Graphics" type="Spatial" parent="Camera/WeaponManager/Weapons/Handgun"]
-transform = Transform( 0.0998717, 0.00653295, 0.99498, -0.0862432, 0.996275, 0.00211528, -0.991257, -0.0860216, 0.100063, 0.11563, 2.66456, 7.85543 )
+transform = Transform( 0.0998717, 0.00653294, 0.99498, -0.0862432, 0.996275, 0.00211529, -0.991257, -0.0860215, 0.100063, 0.11563, 2.66456, 7.85543 )
 
 [node name="Makarov" parent="Camera/WeaponManager/Weapons/Handgun/Graphics" instance=ExtResource( 5 )]
 transform = Transform( 1, -9.31323e-10, 0, 9.31323e-10, 1, 4.65661e-10, 0, 4.65661e-10, 1, 0, 0, 0 )
@@ -554,10 +557,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.482557 )
 
 [node name="HealthManager" parent="." instance=ExtResource( 3 )]
 
-[node name="Timer" type="Timer" parent="."]
-
-[node name="Timer2" type="Timer" parent="."]
-
 [node name="PickupManager" type="Area" parent="."]
 collision_layer = 0
 collision_mask = 8
@@ -567,9 +566,49 @@ script = ExtResource( 16 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
 shape = SubResource( 16 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RestartMessage" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -157.0
+margin_top = -37.5
+margin_right = 157.0
+margin_bottom = 37.5
+custom_fonts/font = ExtResource( 18 )
+text = "GAME OVER
+Press 'T' to try again"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RestartMessage"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.0
+margin_top = -42.5
+margin_right = 162.0
+margin_bottom = 42.5
+texture = ExtResource( 17 )
+stretch_mode = 2
+
+[node name="StatsDisplay" type="Label" parent="CanvasLayer"]
+margin_left = 36.0
+margin_top = 484.0
+margin_right = 178.0
+margin_bottom = 559.0
+custom_fonts/font = ExtResource( 18 )
+text = "Health: 0
+Ammo: 0"
+script = ExtResource( 19 )
+
+[connection signal="ammo_changed" from="Camera/WeaponManager" to="CanvasLayer/StatsDisplay" method="update_ammo"]
 [connection signal="fired" from="Camera/WeaponManager/Weapons/Handgun" to="Camera/WeaponManager/Weapons/Handgun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponManager/Weapons/Shotgun" to="Camera/WeaponManager/Weapons/Shotgun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponManager/Weapons/MachineGun" to="Camera/WeaponManager/Weapons/MachineGun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="movement_info" from="CharacterMover" to="Camera/WeaponManager" method="update_animation"]
-[connection signal="timeout" from="Timer" to="." method="hurt" binds= [ 30, Vector3( 0, 0, 0 ) ]]
-[connection signal="timeout" from="Timer2" to="." method="heal" binds= [ 5 ]]
+[connection signal="dead" from="HealthManager" to="CanvasLayer/RestartMessage" method="show"]
+[connection signal="health_changed" from="HealthManager" to="CanvasLayer/StatsDisplay" method="update_health"]
