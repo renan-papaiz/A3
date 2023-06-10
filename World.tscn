@@ -135,7 +135,7 @@ transform = Transform( -0.0100028, 0, 0.999514, 0, 1.75, 0, -0.320611, 0, -0.031
 transform = Transform( 0.773487, 0, -0.019337, 0, 1.75, 0, 0.0149598, 0, 0.999813, -23.6681, 1, -33.4273 )
 
 [node name="brickwall29" parent="Navigation/NavigationMeshInstance/Enviroment" instance=ExtResource( 2 )]
-transform = Transform( 2.22247, 0, -0.019337, 0, 1.75, 0, 0.042984, 0, 0.999813, -18.1929, 1, -31.5454 )
+transform = Transform( 2.22247, 0, -0.019337, 0, 1.75, 0, 0.042984, 0, 0.999813, -18.2369, 1, -31.5462 )
 
 [node name="brickwall31" parent="Navigation/NavigationMeshInstance/Enviroment" instance=ExtResource( 2 )]
 transform = Transform( 2.89859, 0, -0.019337, 0, 1.75, 0, 0.0560607, 0, 0.999813, -20.8298, 1, -15.9607 )
@@ -187,4 +187,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.7945, 2.345, -13.5199 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0667, 2.345, -40.451 )
 
 [node name="MachineGunPickup" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.985, 2.345, -29.6376 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.062, 2.345, -8.09985 )

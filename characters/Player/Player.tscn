@@ -368,7 +368,7 @@ ammo = 999
 attack_rate = 0.2
 
 [node name="Graphics" type="Spatial" parent="Camera/WeaponManager/Weapons/Handgun"]
-transform = Transform( 0.0998717, 0.00653294, 0.99498, -0.0862432, 0.996275, 0.00211529, -0.991257, -0.0860215, 0.100063, 0.11563, 2.66456, 7.85543 )
+transform = Transform( 0.0998717, 0.00653295, 0.99498, -0.0862432, 0.996275, 0.00211528, -0.991257, -0.0860216, 0.100063, 0.11563, 2.66456, 7.85543 )
 
 [node name="Makarov" parent="Camera/WeaponManager/Weapons/Handgun/Graphics" instance=ExtResource( 5 )]
 transform = Transform( 1, -9.31323e-10, 0, 9.31323e-10, 1, 4.65661e-10, 0, 4.65661e-10, 1, 0, 0, 0 )
@@ -570,5 +570,6 @@ shape = SubResource( 16 )
 [connection signal="fired" from="Camera/WeaponManager/Weapons/Handgun" to="Camera/WeaponManager/Weapons/Handgun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponManager/Weapons/Shotgun" to="Camera/WeaponManager/Weapons/Shotgun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponManager/Weapons/MachineGun" to="Camera/WeaponManager/Weapons/MachineGun/Graphics/MuzzleFlash" method="flash"]
+[connection signal="movement_info" from="CharacterMover" to="Camera/WeaponManager" method="update_animation"]
 [connection signal="timeout" from="Timer" to="." method="hurt" binds= [ 30, Vector3( 0, 0, 0 ) ]]
 [connection signal="timeout" from="Timer2" to="." method="heal" binds= [ 5 ]]

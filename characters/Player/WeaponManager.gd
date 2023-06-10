@@ -77,8 +77,8 @@ func update_animation(velocity: Vector3, grounded: bool):
 	if cur_weapon.has_method("is_idle") and !cur_weapon.is_idle():
 		anim_player.play("idle")
 	if !grounded or velocity.length() < 8.0:
-		anim_player.play("idle", 0.1)
-	anim_player.play("moving")
+		anim_player.play("idle")
+	anim_player.play("moving", 0.1)
 
 func alert_nearby_enemies():
 	var nearby_enemies = alert_area_los.get_overlapping_bodies()
