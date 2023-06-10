@@ -182,6 +182,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14873, 0.0389645 )
 max_health = 40
 
 [node name="CharacterMover" parent="." instance=ExtResource( 5 )]
+move_accel = 2
+max_speed = 6
 ignore_rotation = true
 
 [node name="AimAtObject" type="Spatial" parent="."]

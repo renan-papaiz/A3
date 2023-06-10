@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Hitbox",
 "language": "GDScript",
 "path": "res://characters/Hitbox.gd"
+}, {
+"base": "Area",
+"class": "Pickup",
+"language": "GDScript",
+"path": "res://pickups/Pickup.gd"
 } ]
 _global_script_class_icons={
-"Hitbox": ""
+"Hitbox": "",
+"Pickup": ""
 }
 
 [application]
@@ -99,6 +105,7 @@ restart={
 3d_physics/layer_1="enviroment"
 3d_physics/layer_2="character"
 3d_physics/layer_3="hitboxes"
+3d_physics/layer_4="pickups"
 
 [physics]
 

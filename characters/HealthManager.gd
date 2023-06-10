@@ -12,7 +12,7 @@ signal gibbed
 export var max_health = 100
 var cur_health = 1
 
-export var gib_at = -12
+export var gib_at = -13
 
 func _ready():
 	init()
@@ -67,3 +67,9 @@ func spawn_gibs():
 	get_tree().get_root().add_child(gibs_inst)
 	gibs_inst.global_transform.origin = global_transform.origin
 	gibs_inst.enable_gibs()
+
+func get_pickup(pickup_type, ammo):
+	match pickup_type:
+		Pickup.PICKUP_TYPES.HEALTH:
+			heal(ammo)
+			print("picked up health!")
