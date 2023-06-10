@@ -12,6 +12,6 @@ func update_health(amnt):
 	update_display()
 	
 func update_display():
-	text = "Health: " + str(health)
+	text = "Vida: " + str(health)
 	var ammo_amnt = str(ammo)
-	text += "\nAmmo: " + ammo_amnt
+	text += "\nMunição: " + ammo_amnt
