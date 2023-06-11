@@ -10,3 +10,4 @@ func enable_gibs():
 			child.init()
 		if "emitting" in child:
 			child.emitting = true
+		$DestroyAfterTime.start()

@@ -187,7 +187,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.8473, 2.345, -25.5376 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.7945, 2.345, -13.5199 )
 
 [node name="ShotgunPickup" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0667, 2.345, -40.451 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1363, 2.345, -40.451 )
 
 [node name="MachineGunPickup" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.062, 2.345, -8.09985 )

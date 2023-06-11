@@ -41,7 +41,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.992722, 0 )
 collision_layer = 8
 collision_mask = 0
 script = ExtResource( 1 )
-ammo = 20
+ammo = 17
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
