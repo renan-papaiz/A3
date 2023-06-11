@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="A3"
-run/main_scene="res://characters/Player/Player.tscn"
+run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
 [debug]
