@@ -196,7 +196,7 @@ transform = Transform( -3.7343, 0, 0.0271889, 0, 1.75, 0, -0.101569, 0, -0.99963
 transform = Transform( -3.72439, 0, 0.0271889, 0, 1.75, 0, -0.1013, 0, -0.999631, 26.1915, 1, -1.17289 )
 
 [node name="brickwall51" parent="Navigation/NavigationMeshInstance/Enviroment" instance=ExtResource( 2 )]
-transform = Transform( 0.0691798, 0, 0.999627, 0, 1.75, 0, -2.53048, 0, 0.0273284, 2.35301, 1, -13.2262 )
+transform = Transform( 0.0691798, 0, 0.999627, 0, 1.75, 0, -2.53048, 0, 0.0273284, 2.3518, 1, -13.182 )
 
 [node name="brickwall54" parent="Navigation/NavigationMeshInstance/Enviroment" instance=ExtResource( 2 )]
 transform = Transform( 0.0450756, 0, 0.999627, 0, 1.75, 0, -1.64879, 0, 0.0273284, 19.1995, 1, -14.6672 )
