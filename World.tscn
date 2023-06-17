@@ -88,7 +88,7 @@ transform = Transform( 0.258771, 0, 0, 0, 1.75, 0, 0, 0, 1, -36.9936, 1, -14.530
 transform = Transform( 0.430124, 0, 0, 0, 1.75, 0, 0, 0, 1, -36.7884, 1, -12.5987 )
 
 [node name="brickwall21" parent="Navigation/NavigationMeshInstance/Enviroment" instance=ExtResource( 2 )]
-transform = Transform( 0.644195, 0, 0, 0, 1.75, 0, 0, 0, 1, -34.8123, 1, -16.1022 )
+transform = Transform( 0.644195, 0, 0, 0, 1.75, 0, 0, 0, 1, -34.8326, 1, -16.0763 )
 
 [node name="brickwall" parent="Navigation/NavigationMeshInstance/Enviroment" instance=ExtResource( 2 )]
 transform = Transform( 3.01234, 0, 0, 0, 1.75, 0, 0, 0, 1, -42.2796, 1, -22.6407 )
@@ -283,7 +283,7 @@ transform = Transform( -0.999075, 0, 0.043009, 0, 1, 0, -0.043009, 0, -0.999075,
 transform = Transform( -0.0483617, 0, -0.99883, 0, 1, 0, 0.99883, 0, -0.0483617, 32.743, 1.78065, -13.0585 )
 
 [node name="RangedMonster10" parent="Navigation" instance=ExtResource( 5 )]
-transform = Transform( -0.0483617, 0, -0.99883, 0, 1, 0, 0.99883, 0, -0.0483617, 32.5121, 1.17579, -8.29024 )
+transform = Transform( -0.0239437, 0, -0.999713, 0, 1, 0, 0.999713, 0, -0.0239437, 29.2522, 1.17579, -8.37067 )
 
 [node name="RangedMonster12" parent="Navigation" instance=ExtResource( 5 )]
 transform = Transform( -0.0483617, 0, -0.99883, 0, 1, 0, 0.99883, 0, -0.0483617, 32.3543, 1.78065, -5.03156 )
@@ -335,7 +335,7 @@ transform = Transform( -0.000575944, 0, -1, 0, 1, 0, 1, 0, -0.000575944, 12.7545
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.8473, 2.345, -25.5376 )
 
 [node name="MachineGunAmmoPickup2" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0514, 2.345, -24.8176 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0514, 2.345, -24.7615 )
 
 [node name="ShotgunAmmoPickup" parent="." instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.7945, 2.345, -13.5199 )
