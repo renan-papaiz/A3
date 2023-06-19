@@ -673,6 +673,7 @@ shape = SubResource( 16 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="RestartMessage" type="Label" parent="CanvasLayer"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

@@ -62,8 +62,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("switch_weapon"):
 		weapon_manager.switch_to_next_weapon()
 	
-	rotate_x(Input.get_action_strength("turn_up") * gamepad_sens)
-	rotate_x(Input.get_action_strength("turn_down") * gamepad_sens * -1)
+	$Camera.rotate_x(Input.get_action_strength("turn_up") * gamepad_sens)
+	$Camera.rotate_x(Input.get_action_strength("turn_down") * gamepad_sens * -1)
 	rotate_y(Input.get_action_strength("turn_left") * gamepad_sens)
 	rotate_y(Input.get_action_strength("turn_right") * gamepad_sens * -1)
 	
