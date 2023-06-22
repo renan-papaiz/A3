@@ -30,6 +30,12 @@ config/name="A3"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+LootLocker="*res://LootLocker.gd"
+GlobalWorld="*res://World.gd"
+Stopwatch="*res://Stopwatch.gd"
+
 [debug]
 
 gdscript/warnings/unused_variable=false

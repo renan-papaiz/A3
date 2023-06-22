@@ -66,6 +66,7 @@ func set_state_dead():
 	anim_player.play("die")
 	character_mover.freeze()
 	$CollisionShape.disabled = true
+	queue_free()
 	
 func process_state_idle(delta):
 	if can_see_player():

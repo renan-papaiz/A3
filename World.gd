@@ -1,13 +1,14 @@
 extends Spatial
 
+var enemies
+var enemyCount
+
 func _ready():
-	SilentWolf.configure({
-		"api_key": "xcRbnWlh1fa7Y531jLkTp5SiiuBsXpfs6U19upWG",
-		"game_id" : "themaze",
-		"game_version" : "1.0.0",
-		"log_level" : 0
-	})
-	
-	SilentWolf.configure_score({
-		"open_scene_on_close" : "res://World.tscn"
-	})
+	match OS.get_name():
+		"HTML5", "Windows", "X11":
+			LootLocker.player_id = OS.get_unique_id()
+			LootLocker.authenticate_guest_session()
+
+func _process(delta):
+	enemies = get_tree().get_nodes_in_group("Monsters")
+	enemyCount = enemies.size()

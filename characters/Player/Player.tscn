@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://characters/CharacterMover.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/Player/Player.gd" type="Script" id=2]
@@ -21,6 +21,10 @@
 [ext_resource path="res://characters/Player/StatsDisplay.gd" type="Script" id=19]
 [ext_resource path="res://characters/Player/PickupInfo.gd" type="Script" id=20]
 [ext_resource path="res://UI/KLEINTEN.ttf" type="DynamicFontData" id=21]
+[ext_resource path="res://ScoreScreen.gd" type="Script" id=22]
+[ext_resource path="res://characters/Player/Label.gd" type="Script" id=23]
+[ext_resource path="res://LeaderboardHTTPRequest.gd" type="Script" id=24]
+[ext_resource path="res://CanvasLayer3.gd" type="Script" id=25]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -445,6 +449,27 @@ tracks/0/keys = {
 size = 24
 font_data = ExtResource( 21 )
 
+[sub_resource type="DynamicFont" id=22]
+size = 32
+font_data = ExtResource( 21 )
+
+[sub_resource type="DynamicFont" id=23]
+size = 32
+font_data = ExtResource( 21 )
+
+[sub_resource type="PackedScene" id=24]
+_bundled = {
+"conn_count": 0,
+"conns": PoolIntArray(  ),
+"editable_instances": [  ],
+"names": PoolStringArray(  ),
+"node_count": 0,
+"node_paths": [  ],
+"nodes": PoolIntArray(  ),
+"variants": [  ],
+"version": 2
+}
+
 [node name="Player" type="KinematicBody" groups=["player"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.121417, 0, 0.106084 )
 collision_layer = 6
@@ -728,6 +753,96 @@ script = ExtResource( 20 )
 
 [node name="RemoveInfoTimer" type="Timer" parent="CanvasLayer/PickupInfo"]
 wait_time = 2.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource( 22 )
+
+[node name="Label" type="Label" parent="CanvasLayer2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -331.5
+margin_top = -37.5
+margin_right = 331.5
+margin_bottom = 37.5
+custom_fonts/font = SubResource( 22 )
+script = ExtResource( 23 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/Label"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 17 )
+stretch_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -152.0
+margin_top = 1.0
+margin_right = 8.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 23 )
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer2"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -29.0
+margin_top = 109.0
+margin_right = 29.0
+margin_bottom = 133.0
+
+[node name="Button" type="Button" parent="CanvasLayer2/LineEdit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -6.0
+margin_top = -10.0
+margin_right = 6.0
+margin_bottom = 10.0
+
+[node name="HTTPRequest" type="HTTPRequest" parent="CanvasLayer2"]
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+script = ExtResource( 25 )
+board_entry_scene = SubResource( 24 )
+
+[node name="Label" type="Label" parent="CanvasLayer3"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="ScorePanel" type="Panel" parent="CanvasLayer3"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer3/ScorePanel"]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="PlayersList" type="VBoxContainer" parent="CanvasLayer3/ScorePanel/ScrollContainer"]
+
+[node name="NameLabel" type="Label" parent="CanvasLayer3/ScorePanel"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer3/ScorePanel"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="LeaderboardHTTPRequest" type="HTTPRequest" parent="CanvasLayer3"]
+script = ExtResource( 24 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 
 [connection signal="ammo_changed" from="Camera/WeaponManager" to="CanvasLayer/StatsDisplay" method="update_ammo"]
 [connection signal="fired" from="Camera/WeaponManager/Weapons/Handgun" to="Camera/WeaponManager/Weapons/Handgun/Graphics/MuzzleFlash" method="flash"]
